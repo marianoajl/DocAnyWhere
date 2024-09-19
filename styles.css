@@ -1,0 +1,177 @@
+/* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    color: #333;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+h1, h2, h3 {
+    color: #010EE4;
+}
+
+/* Asegurarse que todo el header se vea en una sola línea */
+header {
+    display: flex; /* Usar Flexbox para alinear los elementos */
+    justify-content: space-between; /* Distribuir espacio entre el logo y el menú */
+    align-items: center; /* Asegurar la alineación vertical */
+    padding: 10px 20px;
+    flex-wrap: nowrap; /* Evitar que los elementos se envuelvan a la siguiente línea */
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+ 
+/* Estilos para el logo */
+.logo {
+    margin-right: 20px; /* Añadir espacio entre el logo y el menú */
+    display: flex; /* Asegura que el contenido del logo también esté en una sola línea */
+    align-items: center; /* Centrar el logo verticalmente */
+}
+
+.logo-img {
+    max-height: 50px; /* Ajustar el tamaño del logo si es necesario */
+}
+
+/* Estilos para el menú de navegación */
+nav ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    margin-right: 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #010EE4;
+    font-size: 16px;
+    padding: 10px;
+}
+
+/* Estilo para el botón de "Ingresar" */
+.btn-access {
+    background-color: #010EE4; /* Fondo azul para el botón */
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+/* Hero Section */
+.hero {
+    background: url('images/hero-background.jpg') no-repeat center center/cover;
+    color: white;
+    padding: 100px 0;
+    text-align: center;
+}
+
+.hero-content {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.hero .btn {
+    background-color: #010EE4;
+    color: white;
+    padding: 15px 30px;
+    border-radius: 5px;
+    margin-top: 20px;
+    display: inline-block;
+}
+
+/* Section Styles */
+.section {
+    padding: 60px 0;
+}
+
+.section-alt {
+    background: #f4f4f4;
+    padding: 60px 0;
+}
+
+.section-img {
+    width: 100%;
+    margin-top: 20px;
+    border-radius: 5px;
+}
+
+.benefits-grid {
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+}
+
+.benefit-item {
+    flex: 1;
+    text-align: center;
+    padding: 20px;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.benefit-item img {
+    height: 50px;
+    margin-bottom: 10px;
+}
+
+.btn {
+    background-color: #010EE4;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+/* Sección de Contacto */
+#contact h2 {
+    margin-bottom: 20px; /* Añadir espacio debajo del título para evitar superposición */
+}
+
+#contact p {
+    font-size: 16px; /* Tamaño de letra adecuado */
+    margin-bottom: 20px; /* Espacio adicional para el párrafo */
+    line-height: 1.6; /* Espaciado entre líneas */
+}
+
+#contact .btn {
+    display: inline-block;
+    background-color: #010EE4;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 5px;
+    margin-top: 10px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#contact {
+    text-align: center; /* Asegura que el botón y el contenido estén centrados */
+}
+
+/* Footer */
+footer {
+    background: #333;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+}
