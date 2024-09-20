@@ -1,3 +1,15 @@
+:root {
+    /* colore */
+    --primary-color:    #010EE4;
+    --white-color:      #ffffff;
+
+    /* width & height */ 
+    --max-width-layout:    1200px;  
+    --container-width:        90%;
+
+    --header-height:         60px;
+}
+
 /* General Styles */
 * {
     margin: 0;
@@ -16,27 +28,39 @@ a {
 }
 
 h1, h2, h3 {
-    color: #010EE4;
+    color: var(--primary-color);
 }
 
 /* Asegurarse que todo el header se vea en una sola línea */
 header {
+    position: sticky;
+    top: 0;
     display: flex; /* Usar Flexbox para alinear los elementos */
     justify-content: space-between; /* Distribuir espacio entre el logo y el menú */
     align-items: center; /* Asegurar la alineación vertical */
-    padding: 10px 20px;
+    padding: 10px 0;
     flex-wrap: nowrap; /* Evitar que los elementos se envuelvan a la siguiente línea */
+    background: var(--white-color);
+    opacity: .9;
+    z-index: 10;
+
+    .container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
 }
 
 .container {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 90%;
-    max-width: 1200px;
+    gap: 1rem;
+    width: var(--container-width);
+    max-width: var(--max-width-layout);
     margin: 0 auto;
 }
- 
+
 /* Estilos para el logo */
 .logo {
     margin-right: 20px; /* Añadir espacio entre el logo y el menú */
@@ -51,29 +75,43 @@ header {
 /* Estilos para el menú de navegación */
 nav ul {
     display: flex;
+    align-items: center;
+    gap: 1rem;
     list-style: none;
     margin: 0;
     padding: 0;
 }
 
-nav ul li {
-    margin-right: 20px;
-}
-
 nav ul li a {
     text-decoration: none;
-    color: #010EE4;
-    font-size: 16px;
+    color: var(--primary-color);
+    font-size: 1rem;
     padding: 10px;
 }
 
 /* Estilo para el botón de "Ingresar" */
 .btn-access {
-    background-color: #010EE4; /* Fondo azul para el botón */
+    background-color: var(--primary-color); /* Fondo azul para el botón */
     color: white;
     padding: 10px 20px;
     border-radius: 5px;
     text-decoration: none;
+}
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    border: none;
+    background: transparent;
+}
+
+.hamburger span {
+    height: 3px;
+    width: 25px;
+    background-color: var(--primary-color);
+    margin: 2px 0;
+    transition: 0.3s;
 }
 
 /* Hero Section */
@@ -90,7 +128,7 @@ nav ul li a {
 }
 
 .hero .btn {
-    background-color: #010EE4;
+    background-color: var(--primary-color);
     color: white;
     padding: 15px 30px;
     border-radius: 5px;
@@ -110,13 +148,12 @@ nav ul li a {
 
 .section-img {
     width: 100%;
-    margin-top: 20px;
     border-radius: 5px;
 }
 
 .benefits-grid {
     display: flex;
-    gap: 20px;
+    gap: 1.25rem;
     justify-content: space-between;
 }
 
@@ -135,33 +172,26 @@ nav ul li a {
 }
 
 .btn {
-    background-color: #010EE4;
+    background-color: var(--primary-color);
     color: white;
     padding: 10px 20px;
     border-radius: 5px;
 }
 
 /* Sección de Contacto */
-#contact h2 {
-    margin-bottom: 20px; /* Añadir espacio debajo del título para evitar superposición */
-}
-
-#contact p {
-    font-size: 16px; /* Tamaño de letra adecuado */
-    margin-bottom: 20px; /* Espacio adicional para el párrafo */
+.contact p {
+    font-size: 1rem; /* Tamaño de letra adecuado */
     line-height: 1.6; /* Espaciado entre líneas */
 }
 
-#contact .btn {
+.contact .btn {
     display: inline-block;
-    background-color: #010EE4;
+    background-color: var(--primary-color);
     color: white;
     padding: 12px 24px;
     border-radius: 5px;
-    margin-top: 10px;
     text-align: center;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 0 auto;
 }
 
 #contact {
@@ -174,4 +204,245 @@ footer {
     color: white;
     text-align: center;
     padding: 20px 0;
+}
+
+@media (width <= 1024px) {
+
+    header {
+        padding: .5rem 0;
+
+        .container {
+            gap: 1rem;
+
+            nav ul {
+                gap: .5rem;
+            }
+        }
+    }
+
+    nav ul li a {
+        padding: .5rem;
+        font-size: .75rem;
+        white-space: nowrap;
+    }
+
+    .container:has(.benefits-grid) {
+        flex-direction: column;
+        gap: 2rem;
+
+        .benefits-grid {
+            gap: 1rem;
+        }
+    }
+
+    /* --- section con imágenes --- */
+    [class^= "section"] {
+
+        .container:has(.section-img) {
+            min-height: 170px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-areas: "title img" "text img";
+            gap: 0.5rem 1rem;
+            justify-content: stretch;
+
+            h2 {
+                font-size: 1.25rem;
+                grid-area: title;
+                align-self: end;
+                text-align: center;
+            }
+    
+            p {
+                grid-area: text;
+                align-self: start;
+                text-align: center;
+            }
+    
+            img {
+                grid-area: img;
+                place-self: center;
+                max-width: 300px;
+                width: 100%;
+            }
+        }
+    }
+
+    .section {
+        .container:has(.section-img) {
+            grid-template-areas: "img title" "img text";
+        }
+    }
+
+
+    .section, 
+    .section-alt {
+        padding: 45px 0;
+    }
+}
+
+@media (width <= 768px) {
+
+    html {
+        font-size: 14px;
+    }
+
+    header {
+        height: var(--header-height);
+        padding: .3rem 0;
+    }
+
+    .nav-links {
+        padding: 1rem 0;
+        display: flex;
+        transition: transform 0.5s ease;
+        position: fixed;
+        top: var(--header-height);
+        right: 0;
+        background-color: #333;
+        width: 100%;
+        transform: translateX(100%);
+
+        ul {
+            flex-direction: column;
+            text-align: center;
+        }
+    }
+
+    nav ul li a {
+        color: var(--white-color);
+        font-size: 1.25rem;
+        letter-spacing: 1.4px;
+    }
+
+    .nav-links li {
+        color: var(--white-color);
+        margin: 10px 0;
+    }
+
+    .nav-active {
+        display: flex;
+        justify-content:center;
+        align-items: center;
+        transform: translateX(0);
+    }
+
+    .hamburger {
+        display: flex;
+    }
+
+    .hamburger.active span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    .hamburger.active span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .hamburger.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(5px, -5px);
+    }
+
+    .container {
+        width: 95%;
+    }
+
+    .benefits {
+        .container {
+            gap: 1rem;
+
+            h2 {
+                text-align: center;
+            }
+        }
+    }
+
+    .benefit-item {
+        padding: 1rem;
+    }
+
+    .contact {
+        .container {
+            flex-direction: column;
+        }
+
+        p {
+            padding: 0 6%;
+            line-height: 1.4;
+        }
+    }
+
+    footer {
+        padding: 1rem 0;
+
+        p {
+            font-size: 0.85rem;
+        }
+    }
+}
+
+@media (width <= 468px) {
+
+    .container:has(.benefits-grid) {
+        h2 {
+            padding: 0 6%;
+        }
+        .benefits-grid {
+            flex-direction: column;
+        }
+
+        .benefit-item {
+            display: grid;
+            grid-template-columns: 1fr 4fr;
+            grid-template-areas: "img title" 
+                                 "img text";
+            gap: 0 .8rem;
+            padding: .85rem;
+        }
+
+        img {
+            grid-area: img;
+            place-self: center;
+            margin: 0;
+        }
+    }
+
+    [class^= "section"], 
+    .section {
+
+        .container:has(.section-img) {
+            min-height: 170px;
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-areas: "img" 
+                                 "title"  
+                                 "text";
+            gap: 0;
+            justify-content: stretch;
+            padding: 0 6%;
+
+            h2 {
+                margin: 0 0 .5rem 0;
+                padding: 0 3%;
+                font-size: 1.25rem;
+                text-align: center;
+            }
+    
+            p {
+                text-align: center;
+            }
+    
+            img {
+                grid-area: img;
+                place-self: center;
+                max-width: 100%;
+                mask-image: linear-gradient(black 50%, transparent);
+            }
+        }
+    }
+
+    .section, 
+    .section-alt {
+        padding: 1.6rem 0;
+    }
 }
